@@ -1,0 +1,11 @@
+This is a text line.
+This is a text line.
+This is another text line.
+This is a text line.
+This is another text line.
+This is another text line.
+This is another text line.
+This is another text line.
+This is another text line.
+A single text line.
+Be it a simple text file.

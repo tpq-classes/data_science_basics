@@ -1,0 +1,221 @@
+   1: import random
+   2: import pickle
+   3: %cd ..
+   4: pwd
+'/root'
+   5: l = list(range(5, 15))
+   6: l
+[5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+   7: t = tuple(range(1, 11))
+   8: t
+(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+   9: d = {'First': 'Yves', 'Last': 'Hilpisch', 'Nationality': 'German'}
+  10: d
+{'First': 'Yves', 'Last': 'Hilpisch', 'Nationality': 'German'}
+  11: s = 'This is a simple sample sentence in string form.'
+  12: pickle.dump?
+  13: fo = open('objects.pickle', 'wb')
+  14: fo
+<_io.BufferedWriter name='objects.pickle'>
+  15: ls
+  16: ls -n
+  17: pickle.dump(fo, l)
+  18: pickle.dump?
+  19: pickle.dump(l, fo)
+  20: pickle.dump(t, fo)
+  21: pickle.dump(d, fo)
+  22: pickle.dump(s, fo)
+  23: ls -n
+  24: fo.close()
+  25: ls -n
+  26: fo = open('objects.pickle', 'rb')
+  27: fo.load?
+  28: pickle.load?
+  29: pickle.load(fo)
+[5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+  30: pickle.load(fo)
+(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  31: pickle.load(fo)
+{'First': 'Yves', 'Last': 'Hilpisch', 'Nationality': 'German'}
+  32: pickle.load(fo)
+'This is a simple sample sentence in string form.'
+  33: pickle.load(fo)
+  34:
+ol = list()
+for _ in range(100_000):
+    il = [random.gauss(0, 1) for _ in range(10)]
+    ol.append(il)
+  35: ol[0]
+[-1.6607565272512215,
+ -0.3164569960294573,
+ -0.790728569403153,
+ 0.07805334067495158,
+ -2.095465946245462,
+ 0.03108981728331758,
+ -0.5804058642479153,
+ -0.17711515199856115,
+ -1.1546779796174818,
+ -0.8600265575394312]
+  36:
+with open('objects.pickle', 'wb') as fo:
+    pickle.dump(ol, fo)
+  37: ls -n
+  38:
+with open('objects.pickle', 'rb') as fo:
+    ol_ = pickle.load(fo)
+  39: ol_[0]
+[-1.6607565272512215,
+ -0.3164569960294573,
+ -0.790728569403153,
+ 0.07805334067495158,
+ -2.095465946245462,
+ 0.03108981728331758,
+ -0.5804058642479153,
+ -0.17711515199856115,
+ -1.1546779796174818,
+ -0.8600265575394312]
+  40: import numpy as np
+  41: rng = np.random.default_rng()
+  42: a = rng.standard_normal((100_000, 10))
+  43: a.nbytes
+8000000
+  44:
+%%time
+with open('objects.pickle', 'wb') as fo:
+    pickle.dump(a, fo)
+  45: ls -n
+  46:
+%%time
+with open('objects.pickle', 'rb') as fo:
+    a_ = pickle.load(fo)
+  47: a = rng.standard_normal((10_000_000, 10))
+  48:
+%%time
+with open('objects.pickle', 'wb') as fo:
+    pickle.dump(a, fo)
+  49:
+%%time
+with open('objects.pickle', 'rb') as fo:
+    a_ = pickle.load(fo)
+  50: ls -n
+  51: np.save?
+  52: %time np.save('ndarray', a)
+  53: np.load?
+  54: %time a_ = np.load('ndarray.npy')
+  55: %time a_ = np.load('ndarray.npy')
+  56: %timeit a_ = np.load('ndarray.npy')
+  57: import pandas as pd
+  58: df = pd.DataFrame(a)
+  59: df.info()
+  60: df.head()
+          0         1         2         3         4         5         6         7         8         9
+0 -0.247974  1.920396  0.667111  0.178155  0.750923 -0.233508  1.704492 -0.621527 -0.477316 -1.279627
+1  0.303551 -1.637928  0.634803 -0.265175  0.428768 -0.082247  0.043379 -0.101311 -1.717237 -1.674095
+2  0.990200 -0.211538 -1.287234  1.044094 -0.959527  0.037529  1.827885 -1.247883  0.702598  0.642267
+3 -0.934330 -0.004995 -1.437416 -0.576726 -1.104785 -0.983221 -0.312877  0.538070 -0.085761 -2.069346
+4  1.855900  0.911924  0.406955  0.398746 -0.837818 -0.346734  0.709965  0.623234  0.809278 -0.595591
+  61: df.mean()
+0    0.000221
+1    0.000039
+2   -0.000239
+3   -0.000296
+4    0.000371
+5   -0.000247
+6    0.000547
+7   -0.000031
+8    0.000016
+9   -0.000165
+dtype: float64
+  62: df.mean().mean()
+np.float64(2.1619827128416673e-05)
+  63: df.std()
+0    1.000015
+1    1.000014
+2    0.999977
+3    1.000214
+4    1.000213
+5    0.999883
+6    0.999883
+7    1.000063
+8    0.999696
+9    1.000044
+dtype: float64
+  64: df.std().mean()
+np.float64(1.0000002956502168)
+  65:
+%%time
+with open('dataframe.pickle', 'wb') as fo:
+    pickle.dump(df, fo)
+  66:
+%%time
+with open('dataframe.pickle', 'rb') as fo:
+    df_ = pickle.load(fo)
+  67:
+%%timeit
+with open('dataframe.pickle', 'rb') as fo:
+    df_ = pickle.load(fo)
+  68: df_.head()
+          0         1         2         3         4         5         6         7         8         9
+0 -0.247974  1.920396  0.667111  0.178155  0.750923 -0.233508  1.704492 -0.621527 -0.477316 -1.279627
+1  0.303551 -1.637928  0.634803 -0.265175  0.428768 -0.082247  0.043379 -0.101311 -1.717237 -1.674095
+2  0.990200 -0.211538 -1.287234  1.044094 -0.959527  0.037529  1.827885 -1.247883  0.702598  0.642267
+3 -0.934330 -0.004995 -1.437416 -0.576726 -1.104785 -0.983221 -0.312877  0.538070 -0.085761 -2.069346
+4  1.855900  0.911924  0.406955  0.398746 -0.837818 -0.346734  0.709965  0.623234  0.809278 -0.595591
+  69: df == df_
+            0     1     2     3     4     5     6     7     8     9
+0        True  True  True  True  True  True  True  True  True  True
+1        True  True  True  True  True  True  True  True  True  True
+2        True  True  True  True  True  True  True  True  True  True
+3        True  True  True  True  True  True  True  True  True  True
+4        True  True  True  True  True  True  True  True  True  True
+...       ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+9999995  True  True  True  True  True  True  True  True  True  True
+9999996  True  True  True  True  True  True  True  True  True  True
+9999997  True  True  True  True  True  True  True  True  True  True
+9999998  True  True  True  True  True  True  True  True  True  True
+9999999  True  True  True  True  True  True  True  True  True  True
+
+[10000000 rows x 10 columns]
+  70: (df == df_).all()
+0    True
+1    True
+2    True
+3    True
+4    True
+5    True
+6    True
+7    True
+8    True
+9    True
+dtype: bool
+  71: %time df.to_csv('dataframe.csv')
+  72: %time df.iloc[:100000].to_csv('dataframe.csv')
+  73: ls -n
+  74: %time df.round(1).to_csv('dataframe.csv')
+  75: ls -n
+  76: !head -5 dataframe.csv
+  77: %time df.iloc[:10000].to_excel('dataframe.xlsx', 'DataFrame')
+  78: !pipx inject ipython openpyxl
+  79: %time df.iloc[:10000].to_excel('dataframe.xlsx', 'DataFrame')
+  80: ls -n
+  81: %time df.iloc[:100000].to_excel('dataframe.xlsx', 'DataFrame')
+  82: ls -n
+  83: %time df.to_hdf?
+  84: %time df.to_hdf('dataframe.hd5', 'DataFrame')
+  85: !pipx inject ipython tables
+  86: !pipx inject ipython tables
+  87: !pipx inject ipython tables
+  88: %time df.to_hdf('dataframe.hd5', 'DataFrame')
+  89: df.to_hdf?
+  90: %time df.to_hdf('dataframe.hd5', key='DataFrame')
+  91: ls -n
+  92: !rm dataframe.hd5
+  93: %time df.to_hdf('dataframe.hd5', key='DataFrame')
+  94: ls -n
+  95: %time df.to_parquet?
+  96: %time df.to_parquet('dataframe.pq')
+  97: !pipx inject ipython pyarrow
+  98: %time df.to_parquet('dataframe.pq')
+  99: ls -n
+ 100: cd live
+ 101: %history -n -o -f data_science_basics_10.txt

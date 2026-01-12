@@ -1,0 +1,90 @@
+   1:
+def fibo_it(N):
+    if N < 2:
+        return N
+    x, y  = 0, 1
+    for n in range(2, N + 1):
+        x, y = y, x + y
+    return y
+   2: fibo_it(5)
+   3: fibo_it(15)
+   4:
+def fibo_rec(N):
+    if N < 2:
+        return N
+    else:
+        return fibo_rec(N - 1) + fibo_rec(N - 2)
+   5: fibo_rec(5)
+   6: fibo_rec(15)
+   7: %time [fibo_it(n) for n in range(15)]
+   8: %time [fibo_rec(n) for n in range(15)]
+   9: %timeit [fibo_rec(n) for n in range(15)]
+  10: %timeit [fibo_it(n) for n in range(15)]
+  11: from functools import lru_cache as cache
+  12: %ed fibo_rec
+  13: %timeit [fibo_it(n) for n in range(15)]
+  14: %timeit [fibo_rec(n) for n in range(15)]
+  15: %timeit [fibo_it(n) for n in range(100)]
+  16: %timeit [fibo_rec(n) for n in range(100)]
+  17: fibo_rec(100)
+  18: fibo_rec(150)
+  19: fibo_rec(250)
+  20: fibo_rec??
+  21: l = list(range(1000))
+  22: len(l)
+  23: l[500:511]
+  24: l[501:511]
+  25: sr = [x ** 0.5 for x in l]
+  26: sr[501:511]
+  27:
+def f(x):
+    return x ** 0.5
+  28: f(10)
+  29: # https://chatgpt.com/share/67321573-1644-8000-9532-7eb657bc64bb
+  30: import numpy as np
+  31: import numpy as np
+  32: a = np.array(l)
+  33: a
+  34: type(a)
+  35: a.shape
+  36: l
+  37: %time sr = [x ** 0.5 for x in l]
+  38: %timeit sr = [x ** 0.5 for x in l]
+  39: %time sr = [x ** 0.5 for x in a]
+  40: %timeit sr = [x ** 0.5 for x in a]
+  41: %time sr = a ** 0.5
+  42: type(sr)
+  43: len(sr)
+  44: sr[:10]
+  45: %timeit sr = a ** 0.5
+  46: %timeit sr = [x ** 0.5 for x in l]
+  47: l = list(range(10_000_000))
+  48: a = np.array(l)
+  49: %timeit sr = [x ** 0.5 for x in l]
+  50: %timeit sr = a ** 0.5
+  51: a = np.arange(10)
+  52: a
+  53: a ** 0.5
+  54: np.sqrt(a)
+  55: 2 * a
+  56: a + a
+  57: a ** 2
+  58: 2 ** a
+  59: a
+  60: a ** a
+  61: l = list(range(10))
+  62: l
+  63: sum(l)
+  64: sum(a)
+  65: np.sum(a)
+  66: a.sum()
+  67: b = np.arange(100_000_000)
+  68: len(b)
+  69: m = list(b)
+  70: %time s = sum(m)
+  71: %time s = sum(b)
+  72: %time s = np.sum(b)
+  73: %time s = b.sum()
+  74: # NumPy, generally speaking, more concise code AND faster execution
+  75: %history -o -n -f data_science_basics_07.txt
+  76: %history -n -f data_science_basics_07_no_output.txt

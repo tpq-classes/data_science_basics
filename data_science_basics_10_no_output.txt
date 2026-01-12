@@ -1,0 +1,131 @@
+   1: import random
+   2: import pickle
+   3: %cd ..
+   4: pwd
+   5: l = list(range(5, 15))
+   6: l
+   7: t = tuple(range(1, 11))
+   8: t
+   9: d = {'First': 'Yves', 'Last': 'Hilpisch', 'Nationality': 'German'}
+  10: d
+  11: s = 'This is a simple sample sentence in string form.'
+  12: pickle.dump?
+  13: fo = open('objects.pickle', 'wb')
+  14: fo
+  15: ls
+  16: ls -n
+  17: pickle.dump(fo, l)
+  18: pickle.dump?
+  19: pickle.dump(l, fo)
+  20: pickle.dump(t, fo)
+  21: pickle.dump(d, fo)
+  22: pickle.dump(s, fo)
+  23: ls -n
+  24: fo.close()
+  25: ls -n
+  26: fo = open('objects.pickle', 'rb')
+  27: fo.load?
+  28: pickle.load?
+  29: pickle.load(fo)
+  30: pickle.load(fo)
+  31: pickle.load(fo)
+  32: pickle.load(fo)
+  33: pickle.load(fo)
+  34:
+ol = list()
+for _ in range(100_000):
+    il = [random.gauss(0, 1) for _ in range(10)]
+    ol.append(il)
+  35: ol[0]
+  36:
+with open('objects.pickle', 'wb') as fo:
+    pickle.dump(ol, fo)
+  37: ls -n
+  38:
+with open('objects.pickle', 'rb') as fo:
+    ol_ = pickle.load(fo)
+  39: ol_[0]
+  40: import numpy as np
+  41: rng = np.random.default_rng()
+  42: a = rng.standard_normal((100_000, 10))
+  43: a.nbytes
+  44:
+%%time
+with open('objects.pickle', 'wb') as fo:
+    pickle.dump(a, fo)
+  45: ls -n
+  46:
+%%time
+with open('objects.pickle', 'rb') as fo:
+    a_ = pickle.load(fo)
+  47: a = rng.standard_normal((10_000_000, 10))
+  48:
+%%time
+with open('objects.pickle', 'wb') as fo:
+    pickle.dump(a, fo)
+  49:
+%%time
+with open('objects.pickle', 'rb') as fo:
+    a_ = pickle.load(fo)
+  50: ls -n
+  51: np.save?
+  52: %time np.save('ndarray', a)
+  53: np.load?
+  54: %time a_ = np.load('ndarray.npy')
+  55: %time a_ = np.load('ndarray.npy')
+  56: %timeit a_ = np.load('ndarray.npy')
+  57: import pandas as pd
+  58: df = pd.DataFrame(a)
+  59: df.info()
+  60: df.head()
+  61: df.mean()
+  62: df.mean().mean()
+  63: df.std()
+  64: df.std().mean()
+  65:
+%%time
+with open('dataframe.pickle', 'wb') as fo:
+    pickle.dump(df, fo)
+  66:
+%%time
+with open('dataframe.pickle', 'rb') as fo:
+    df_ = pickle.load(fo)
+  67:
+%%timeit
+with open('dataframe.pickle', 'rb') as fo:
+    df_ = pickle.load(fo)
+  68: df_.head()
+  69: df == df_
+  70: (df == df_).all()
+  71: %time df.to_csv('dataframe.csv')
+  72: %time df.iloc[:100000].to_csv('dataframe.csv')
+  73: ls -n
+  74: %time df.round(1).to_csv('dataframe.csv')
+  75: ls -n
+  76: !head -5 dataframe.csv
+  77: %time df.iloc[:10000].to_excel('dataframe.xlsx', 'DataFrame')
+  78: !pipx inject ipython openpyxl
+  79: %time df.iloc[:10000].to_excel('dataframe.xlsx', 'DataFrame')
+  80: ls -n
+  81: %time df.iloc[:100000].to_excel('dataframe.xlsx', 'DataFrame')
+  82: ls -n
+  83: %time df.to_hdf?
+  84: %time df.to_hdf('dataframe.hd5', 'DataFrame')
+  85: !pipx inject ipython tables
+  86: !pipx inject ipython tables
+  87: !pipx inject ipython tables
+  88: %time df.to_hdf('dataframe.hd5', 'DataFrame')
+  89: df.to_hdf?
+  90: %time df.to_hdf('dataframe.hd5', key='DataFrame')
+  91: ls -n
+  92: !rm dataframe.hd5
+  93: %time df.to_hdf('dataframe.hd5', key='DataFrame')
+  94: ls -n
+  95: %time df.to_parquet?
+  96: %time df.to_parquet('dataframe.pq')
+  97: !pipx inject ipython pyarrow
+  98: %time df.to_parquet('dataframe.pq')
+  99: ls -n
+ 100: cd live
+ 101: %history -n -o -f data_science_basics_10.txt
+ 102: %history -n -f data_science_basics_10_no_output.txt

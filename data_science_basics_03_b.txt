@@ -1,0 +1,27 @@
+    1  python
+    2  python3
+    3  eval "$(/root/miniconda3/bin/conda shell.bash hook)"
+    4  python
+    5  pyhton3
+    6  python3
+    7  conda init
+    8  conda install numpy pandas ipython
+    9  ipython
+   10  conda create -py313 python=3.13
+   11  conda activate py313
+   12  conda env list
+   13  conda create -n py313 python=3.13
+   14  conda activate py313
+   15  python
+   16  conda install ipython numpy pandas
+   17  ipython
+   18  conda install ipython numpy
+   19  pip install ipython
+   20  ipython
+   21  pip install numpy
+   22  python
+   23  pip install pandas
+   24  ipython
+   25  conda deactivate
+   26  cd live
+   27  history > data_science_basics_03_b.txt

@@ -1,0 +1,5 @@
+apt install wget curl git
+
+pipx inject ipython pyzmq
+
+source ~/.local/share/pipx/venvs/ipython/bin/activate

@@ -1,0 +1,98 @@
+    1  ls
+    2  cd root
+    3  ls
+    4  ls live
+    5  ls live/test/
+    6  apt update
+    7  apt upgrade -y
+    8  ls
+    9  cd live/
+   10  ls
+   11  cat data_science_basics_01.txt 
+   12  more
+   13  more --help
+   14  more data_science_basics_01.txt 
+   15  less data_science_basics_01.txt 
+   16  apt install less
+   17  less data_science_basics_01.txt 
+   18  less --help
+   19  less data_science_basics_01.txt 
+   20  head data_science_basics_01.txt 
+   21  tail data_science_basics_01.txt 
+   22  head -n 5 data_science_basics_01.txt 
+   23  tail -n 5 data_science_basics_01.txt 
+   24  grep "cp" data_science_basics_01.txt 
+   25  grep "mv" data_science_basics_01.txt 
+   26  grep "*.txt" data_science_basics_01.txt 
+   27  grep -E "*.txt" data_science_basics_01.txt 
+   28  grep -E "[0-9]+" data_science_basics_01.txt 
+   29  wc
+   30  wc data_science_basics_01.txt 
+   31  wc -l data_science_basics_01.txt 
+   32  wc -w data_science_basics_01.txt 
+   33  wc -m data_science_basics_01.txt 
+   34  grep "ls" data_science_basics_01.txt 
+   35  grep "ls" data_science_basics_01.txt | wc -l
+   36  cd test/
+   37  ls
+   38  ls | grep -E "*.txt"
+   39  cat test_1.txt 
+   40  cat test_2.txt 
+   41  cat test_3.txt 
+   42  grep "text" *.txt
+   43  grep "line" *.txt
+   44  uniq
+   45  uniq --help
+   46  cd ..
+   47  uniq data_science_basics_01.txt 
+   48  uniq -c data_science_basics_01.txt 
+   49  echo "This is a text line." > text.txt
+   50  echo "This is a text line." >> text.txt
+   51  echo "This is another text line." >> text.txt
+   52  echo "This is a text line." >> text.txt
+   53  echo "This is another text line." >> text.txt
+   54  cat text.txt 
+   55  uniq text.txt 
+   56  uniq -c text.txt 
+   57  echo "This is another text line." >> text.txt
+   58  cat text
+   59  cat text.txt 
+   60  uniq -c text.txt 
+   61  echo "This is a string. These are numbers 1234567." 
+   62  echo "This is a string. These are numbers 1234567." | tr -d '0-9'
+   63  echo "This is a string. These are numbers 1234567." | tr -d 'aie'
+   64  echo "This is a string. These are numbers 1234567." | tr ' ' '_'
+   65  cat text.txt | tr ' ' '_'
+   66  cat text.txt | tr 'A-Z ' 'a-z'
+   67  cat text.txt 
+   68  cat text.txt | tr 'A-Z' 'a-z'
+   69  cat text.txt | tr 'a-z' 'A-Z'
+   70  sort
+   71  sort --help
+   72  cat text.txt 
+   73  cat text.txt | sort
+   74  echo "A single text line." >> text.txt 
+   75  echo "Be it a simple text file." >> text.txt
+   76  cat text.txt 
+   77  cat text.txt | sort
+   78  cat text.txt | sort | uniq -c
+   79  cat text.txt | sort | uniq
+   80  wget
+   81  apt install wget
+   82  wget http://classics.mit.edu/Tzu/artwar.1b.txt
+   83  ls
+   84  mv artwar.1b.txt art_of_war.txt
+   85  ls
+   86  wc art_of_war.txt 
+   87  head art_of_war.txt 
+   88  tail art_of_war.txt 
+   89  less art_of_war.txt 
+   90  cat art_of_war.txt | grep war
+   91  cat art_of_war.txt | grep victory
+   92  cat art_of_war.txt | grep victory | wc -l
+   93  cat art_of_war.txt | grep "and"
+   94  cat art_of_war.txt | grep "and" | wc -l
+   95  cat art_of_war.txt | tr 'A-Z' 'a-z'
+   96  time cat art_of_war.txt | tr 'A-Z' 'a-z'
+   97  time cat art_of_war.txt | grep -E "[0-9]+"
+   98  history > data_science_basics_02.txt

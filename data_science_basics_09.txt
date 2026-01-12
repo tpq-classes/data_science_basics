@@ -1,0 +1,376 @@
+   1: import numpy as np
+   2: import pandas as pd
+   3: np.arange(15)
+array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])
+   4: np.arange(15).reshape(5, 3)
+array([[ 0,  1,  2],
+       [ 3,  4,  5],
+       [ 6,  7,  8],
+       [ 9, 10, 11],
+       [12, 13, 14]])
+   5: a = np.arange(15).reshape(5, 3)
+   6: np.array(list())
+array([], dtype=float64)
+   7: df = pd.DataFrame(a)
+   8: df
+    0   1   2
+0   0   1   2
+1   3   4   5
+2   6   7   8
+3   9  10  11
+4  12  13  14
+   9: df.index
+RangeIndex(start=0, stop=5, step=1)
+  10: df.columns
+RangeIndex(start=0, stop=3, step=1)
+  11: df.index = list('abcde')
+  12: df.index
+Index(['a', 'b', 'c', 'd', 'e'], dtype='object')
+  13: df.columns = list('ABC')
+  14: df.columns
+Index(['A', 'B', 'C'], dtype='object')
+  15: df
+    A   B   C
+a   0   1   2
+b   3   4   5
+c   6   7   8
+d   9  10  11
+e  12  13  14
+  16: a
+array([[ 0,  1,  2],
+       [ 3,  4,  5],
+       [ 6,  7,  8],
+       [ 9, 10, 11],
+       [12, 13, 14]])
+  17: 2 * a
+array([[ 0,  2,  4],
+       [ 6,  8, 10],
+       [12, 14, 16],
+       [18, 20, 22],
+       [24, 26, 28]])
+  18: 2 * df
+    A   B   C
+a   0   2   4
+b   6   8  10
+c  12  14  16
+d  18  20  22
+e  24  26  28
+  19: df ** 2
+     A    B    C
+a    0    1    4
+b    9   16   25
+c   36   49   64
+d   81  100  121
+e  144  169  196
+  20: np.sqrt(df)
+          A         B         C
+a  0.000000  1.000000  1.414214
+b  1.732051  2.000000  2.236068
+c  2.449490  2.645751  2.828427
+d  3.000000  3.162278  3.316625
+e  3.464102  3.605551  3.741657
+  21: 2 ** df
+      A     B      C
+a     1     2      4
+b     8    16     32
+c    64   128    256
+d   512  1024   2048
+e  4096  8192  16384
+  22: df ** df
+               A                B                  C
+a              1                1                  4
+b             27              256               3125
+c          46656           823543           16777216
+d      387420489      10000000000       285311670611
+e  8916100448256  302875106592253  11112006825558016
+  23: a.sum()
+np.int64(105)
+  24: df.sum()
+A    30
+B    35
+C    40
+dtype: int64
+  25: df.sum().sum()
+np.int64(105)
+  26: a.sum(axis=0)
+array([30, 35, 40])
+  27: a.sum(axis=1)
+array([ 3, 12, 21, 30, 39])
+  28: df.sum(axis=1)
+a     3
+b    12
+c    21
+d    30
+e    39
+dtype: int64
+  29: a.mean()
+np.float64(7.0)
+  30: df.mean()
+A    6.0
+B    7.0
+C    8.0
+dtype: float64
+  31: df.mean().mean()
+np.float64(7.0)
+  32: a = np.arange(3 * 10_000_000).reshape(10_000_000, 3)
+  33: a.nbytes
+240000000
+  34: df = pd.DataFrame(a)
+  35: %time sr = np.sqrt(a)
+  36: %timeit sr = np.sqrt(a)
+  37: %time sr = np.sqrt(df)
+  38: %timeit sr = np.sqrt(df)
+  39: %timeit m = a.mean(axis=0)
+  40: %timeit m = df.mean(axis=0)
+  41: a = np.arange(15).reshape(5, 3)
+  42: df = pd.DataFrame(a)
+  43: df
+    0   1   2
+0   0   1   2
+1   3   4   5
+2   6   7   8
+3   9  10  11
+4  12  13  14
+  44: df.columns = list('ABC')
+  45: df.index = list('abcde')
+  46: df
+    A   B   C
+a   0   1   2
+b   3   4   5
+c   6   7   8
+d   9  10  11
+e  12  13  14
+  47: a
+array([[ 0,  1,  2],
+       [ 3,  4,  5],
+       [ 6,  7,  8],
+       [ 9, 10, 11],
+       [12, 13, 14]])
+  48: a[0]
+array([0, 1, 2])
+  49: a[0, 0]
+np.int64(0)
+  50: a[-1, -1]
+np.int64(14)
+  51: a[:, -1]
+array([ 2,  5,  8, 11, 14])
+  52: df.iloc[0]
+A    0
+B    1
+C    2
+Name: a, dtype: int64
+  53: df[0]
+  54: df.iloc[0, 0]
+np.int64(0)
+  55: df.iloc[-1, -1]
+np.int64(14)
+  56: df.iloc[:, -1]
+a     2
+b     5
+c     8
+d    11
+e    14
+Name: C, dtype: int64
+  57: df.iloc[:, :, 2]
+  58: df.iloc[::2]
+    A   B   C
+a   0   1   2
+c   6   7   8
+e  12  13  14
+  59: df.iloc[::-1]
+    A   B   C
+e  12  13  14
+d   9  10  11
+c   6   7   8
+b   3   4   5
+a   0   1   2
+  60:
+def f(x):
+    return x ** 2
+  61: f(a)
+array([[  0,   1,   4],
+       [  9,  16,  25],
+       [ 36,  49,  64],
+       [ 81, 100, 121],
+       [144, 169, 196]])
+  62: f(df)
+     A    B    C
+a    0    1    4
+b    9   16   25
+c   36   49   64
+d   81  100  121
+e  144  169  196
+  63: df.apply(f)
+     A    B    C
+a    0    1    4
+b    9   16   25
+c   36   49   64
+d   81  100  121
+e  144  169  196
+  64: df.sum()
+A    30
+B    35
+C    40
+dtype: int64
+  65: df.sum().apply(f)
+A     900
+B    1225
+C    1600
+dtype: int64
+  66: f(df.sum())
+A     900
+B    1225
+C    1600
+dtype: int64
+  67: df.iloc[:, -1].sum().apply(f)
+  68: df.iloc[:, -1].sum()#.apply(f)
+np.int64(40)
+  69: df.iloc[:, 1:].sum()#.apply(f)
+B    35
+C    40
+dtype: int64
+  70: df.iloc[:, 1:].sum().apply(f)
+B    1225
+C    1600
+dtype: int64
+  71: f(df.iloc[:, -1].sum())
+np.int64(1600)
+  72: df.loc[0]
+  73: df.loc['a']
+A    0
+B    1
+C    2
+Name: a, dtype: int64
+  74: df.loc['b']
+A    3
+B    4
+C    5
+Name: b, dtype: int64
+  75: df.loc['a':'b']
+   A  B  C
+a  0  1  2
+b  3  4  5
+  76: df.loc['b':]
+    A   B   C
+b   3   4   5
+c   6   7   8
+d   9  10  11
+e  12  13  14
+  77: df.loc['b':'d']
+   A   B   C
+b  3   4   5
+c  6   7   8
+d  9  10  11
+  78: df.loc['A']
+  79: df.loc[:, 'A']
+a     0
+b     3
+c     6
+d     9
+e    12
+Name: A, dtype: int64
+  80: df.loc[:, 'A':'B']
+    A   B
+a   0   1
+b   3   4
+c   6   7
+d   9  10
+e  12  13
+  81: df.loc[:, :'B']
+    A   B
+a   0   1
+b   3   4
+c   6   7
+d   9  10
+e  12  13
+  82: df.loc[:, 'B':]
+    B   C
+a   1   2
+b   4   5
+c   7   8
+d  10  11
+e  13  14
+  83: df.loc['a', 'A']
+np.int64(0)
+  84: df.loc['e', 'C']
+np.int64(14)
+  85: df.loc[-1, -1]
+  86: df
+    A   B   C
+a   0   1   2
+b   3   4   5
+c   6   7   8
+d   9  10  11
+e  12  13  14
+  87: df['a]
+  88: df['a']
+  89: df['A']
+a     0
+b     3
+c     6
+d     9
+e    12
+Name: A, dtype: int64
+  90: a.dtype
+dtype('int64')
+  91: df.dtypes
+A    int64
+B    int64
+C    int64
+dtype: object
+  92: df['T'] = list('MNOPQ')
+  93: df
+    A   B   C  T
+a   0   1   2  M
+b   3   4   5  N
+c   6   7   8  O
+d   9  10  11  P
+e  12  13  14  Q
+  94: df.dtypes
+A     int64
+B     int64
+C     int64
+T    object
+dtype: object
+  95: df.sum()
+A       30
+B       35
+C       40
+T    MNOPQ
+dtype: object
+  96: np.sqrt(df)
+  97: df.sum(axis=1)
+  98: df.loc['A':'C']
+Empty DataFrame
+Columns: [A, B, C, T]
+Index: []
+  99: df
+    A   B   C  T
+a   0   1   2  M
+b   3   4   5  N
+c   6   7   8  O
+d   9  10  11  P
+e  12  13  14  Q
+ 100: df.loc['A':'C'].apply(np.sqrt)
+Empty DataFrame
+Columns: [A, B, C, T]
+Index: []
+ 101: df.loc[:, 'A':'C'].apply(np.sqrt)
+          A         B         C
+a  0.000000  1.000000  1.414214
+b  1.732051  2.000000  2.236068
+c  2.449490  2.645751  2.828427
+d  3.000000  3.162278  3.316625
+e  3.464102  3.605551  3.741657
+ 102: df.loc[:, 'A':'C'].apply(np.sum)
+A    30
+B    35
+C    40
+dtype: int64
+ 103: df.dtypes
+A     int64
+B     int64
+C     int64
+T    object
+dtype: object
+ 104: %history -n -o -f data_science_basics_09.txt

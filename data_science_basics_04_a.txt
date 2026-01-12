@@ -1,0 +1,191 @@
+   1: a = 10
+   2: b = 1.5
+   3: c = 1 / 3
+   4: type(a)
+int
+   5: type(b)
+float
+   6: type(c)
+float
+   7: 2 * a
+20
+   8: a + a
+20
+   9: a + b
+11.5
+  10: a + 2 * b
+13.0
+  11: b ** 2
+2.25
+  12: %who
+  13: %whos
+  14: who
+  15: whos
+  16: %lsmagic
+Available line magics:
+%alias  %alias_magic  %autoawait  %autocall  %autoindent  %automagic  %bookmark  %cat  %cd  %clear  %code_wrap  %colors  %conda  %config  %cp  %cpaste  %debug  %dhist  %dirs  %doctest_mode  %ed  %edit  %env  %gui  %hist  %history  %killbgscripts  %ldir  %less  %lf  %lk  %ll  %load  %load_ext  %loadpy  %logoff  %logon  %logstart  %logstate  %logstop  %ls  %lsmagic  %lx  %macro  %magic  %mamba  %man  %matplotlib  %micromamba  %mkdir  %more  %mv  %notebook  %page  %paste  %pastebin  %pdb  %pdef  %pdoc  %pfile  %pinfo  %pinfo2  %pip  %popd  %pprint  %precision  %prun  %psearch  %psource  %pushd  %pwd  %pycat  %pylab  %quickref  %recall  %rehashx  %reload_ext  %rep  %rerun  %reset  %reset_selective  %rm  %rmdir  %run  %save  %sc  %set_env  %store  %sx  %system  %tb  %time  %timeit  %unalias  %unload_ext  %uv  %who  %who_ls  %whos  %xdel  %xmode
+
+Available cell magics:
+%%!  %%HTML  %%SVG  %%bash  %%capture  %%code_wrap  %%debug  %%file  %%html  %%javascript  %%js  %%latex  %%markdown  %%perl  %%prun  %%pypy  %%python  %%python2  %%python3  %%ruby  %%script  %%sh  %%svg  %%sx  %%system  %%time  %%timeit  %%writefile
+
+Automagic is ON, % prefix IS NOT needed for line magics.
+  17: %logstart data_science_basics_04.txt
+  18: s = "some text"
+  19: t = 'another text'
+  20: type(s)
+str
+  21: type(t)
+str
+  22: 2 * s
+'some textsome text'
+  23: 2 * t
+'another textanother text'
+  24: s + s
+'some textsome text'
+  25: s + t
+'some textanother text'
+  26: s
+'some text'
+  27: t
+'another text'
+  28: a
+10
+  29: print(s)
+  30: s.capitalize()
+'Some text'
+  31: s
+'some text'
+  32: s.upper()
+'SOME TEXT'
+  33: s
+'some text'
+  34: print(s)
+  35: print(f'This is the value of a: {a}.')
+  36: t = a, b, c, s
+  37: t
+(10, 1.5, 0.3333333333333333, 'some text')
+  38: type(t)
+tuple
+  39: len(t)
+4
+  40:
+for e in t:
+    print(e)
+  41:
+for e in t:
+    print(type(e))
+  42: sum(t)
+  43: t = a, b, c
+  44: t
+(10, 1.5, 0.3333333333333333)
+  45: sum(t)
+11.833333333333334
+  46:
+S = 0
+for e in t:
+    S += e
+print(S)
+  47:
+S = 0
+for e in t:
+    S += e
+print(S)
+  48:
+S = 0
+for e in t:
+    S += e
+print(S)
+print(S ** 2)
+  49: s
+'some text'
+  50: t
+(10, 1.5, 0.3333333333333333)
+  51: l = [a, b, c, s]
+  52: type(l)
+list
+  53: l
+[10, 1.5, 0.3333333333333333, 'some text']
+  54: sum(t)
+11.833333333333334
+  55: sum(l)
+  56: l.remove?
+  57: l.pop?
+  58: l.remove('some text')
+  59: l
+[10, 1.5, 0.3333333333333333]
+  60: sum(l)
+11.833333333333334
+  61: l = [a, b, c, s]
+  62: l
+[10, 1.5, 0.3333333333333333, 'some text']
+  63: l.pop()
+'some text'
+  64: l
+[10, 1.5, 0.3333333333333333]
+  65: l.insert?
+  66: l.insert(2, 'Python')
+  67: l
+[10, 1.5, 'Python', 0.3333333333333333]
+  68: l = [a, b, c, s]
+  69: l
+[10, 1.5, 0.3333333333333333, 'some text']
+  70: l.insert(2, 'Python')
+  71: l
+[10, 1.5, 'Python', 0.3333333333333333, 'some text']
+  72: l
+[10, 1.5, 'Python', 0.3333333333333333, 'some text']
+  73: l[0]
+10
+  74: l[1]
+1.5
+  75: l[4]
+'some text'
+  76: len(l)
+5
+  77: l[len(l) - 1]
+'some text'
+  78: l[-1]
+'some text'
+  79: l[-2]
+0.3333333333333333
+  80: type(l[2])
+str
+  81: type(l[2]) == str
+True
+  82: type(l[2]) != str
+False
+  83: type(l[1]) != str
+True
+  84:
+for i, e in enumerate(t):
+    print(i, e)
+  85:
+for i, e in enumerate(l):
+    print(i, e)
+  86:
+for i, e in enumerate(l):
+    if type(e) == str:
+        l.pop(i)
+  87: l
+[10, 1.5, 0.3333333333333333]
+  88: sum(l)
+11.833333333333334
+  89:
+S = 0
+for e in t:
+    if type(e) in [int, float]:
+        S += e
+  90: S
+11.833333333333334
+  91: l = [a, b, c, s]
+  92: l.insert(2, 'Python')
+  93: l
+[10, 1.5, 'Python', 0.3333333333333333, 'some text']
+  94:
+S = 0
+for e in t:
+    if type(e) in [int, float]:
+        S += e
+  95: S
+11.833333333333334
+  96: %history -o -n -f data_science_basics_04_a.txt

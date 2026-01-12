@@ -1,0 +1,8 @@
+    1  echo "Hello Screen!"
+    2  pwd
+    3  ls
+    4  cat live/screen.txt 
+    5  less
+    6  more live/screen.txt 
+    7  ipython
+    8  history > live/data_science_basics_06_a.txt

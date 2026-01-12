@@ -1,0 +1,307 @@
+   1: 4 / 2
+2.0
+   2: int(1e8 + 5)
+100000005
+   3: int(1e8 + 5) / 5
+20000001.0
+   4: int(1e8 + 7)
+100000007
+   5: int(1e8 + 3)
+100000003
+   6: n1 = 1e8 + 5
+   7: n2 = 1e8 + 7
+   8:
+def is_prime_1(N):
+    for n in range(2, N):
+        if N % n == 0:
+            return False
+    return True
+   9: 10 % 5
+0
+  10: 10 % 4
+2
+  11: 10 % 3
+1
+  12: N = 10
+  13: [i for i in range(2, N)]
+[2, 3, 4, 5, 6, 7, 8, 9]
+  14: is_prime_1(n1)
+  15: n1
+100000005.0
+  16: n2
+100000007.0
+  17: n1 = int(1e8 + 5)
+  18: n2 = int(1e8 + 7)
+  19: is_prime_1(n1)
+False
+  20: is_prime_1(n2)
+True
+  21: %time is_prime_1(n2)
+True
+  22: %time is_prime_1(n1)
+False
+  23:
+def is_prime_2(N):
+    if N % 2 == 0:
+        return False
+    for n in range(3, N, 2):
+        if N % n == 0:
+            return False
+    return True
+  24: %time is_prime_2(n1)
+False
+  25: %time is_prime_2(n2)
+True
+  26: %who
+  27: %ed is_prime_2
+  28: !export EDITOR="nano"
+  29: %ed is_prime_2
+  30: !apt install vi
+  31: !apt install vim
+  32: %ed is_prime_2
+'def is_prime_3(N):\n    if N % 2 == 0:\n        return False\n    max_iter = int(N ** 0.5) + 1\n    for n in range(3, max_iter, 2):\n        if N % n == 0:\n            return False\n    return True\n    \n'
+  33: %who
+  34: %ed is_prime_3
+'def is_prime_3(N):\n    if N % 2 == 0:\n        return False\n    max_iter = int(N ** 0.5) + 1\n    for n in range(3, max_iter, 2):\n        if N % n == 0:\n            return False\n    return True\n    \n'
+  35: is_prime_1??
+  36: is_prime_2??
+  37: is_prime_3??
+  38: is_prime_3(n1)
+False
+  39: is_prime_3(n2)
+True
+  40: %time is_prime_3(n2)
+True
+  41: %timeit is_prime_1(n2)
+  42: %timeit is_prime_2(n2)
+  43: %timeit is_prime_3(n2)
+  44: n2
+100000007
+  45: int(n2 ** 0.5)
+10000
+  46: 655360001 / n2
+6.553599551248031
+  47: n3 = 655360001
+  48: %timeit is_prime_3(n3)
+  49: n4 = 1442968193
+  50: n4 / n2
+14.429680919922335
+  51: %timeit is_prime_3(n4)
+  52: n5 = 44560482149
+  53: n5 / n2
+445.6047902976647
+  54: %timeit is_prime_3(n5)
+  55: n6 = 228204732751
+  56: n6 / n2
+2282.0471677666983
+  57: %timeit is_prime_3(n6)
+  58: %ed is_prime_3
+'def is_prime_4(N):\n    if N % 2 == 0 or N % 3 == 0:\n        return False\n    max_iter = int(N ** 0.5) + 1\n    for n in range(5, max_iter, 6):\n        # checking for 6k +/- 1\n        if N % n == 0 or N % (n + 2) == 0:\n            return False\n    return True\n    \n'
+  59: is_prime_4(n1)
+False
+  60: is_prime_4(n2)
+True
+  61: is_prime_4(n3)
+True
+  62: is_prime_4(n4)
+True
+  63: %timeit is_prime_3(n6)
+  64: %timeit is_prime_4(n6)
+  65: n7 = 1171432692373
+  66: n7 / n2
+11714.326103727173
+  67: %time is_prime_3(n7)
+True
+  68: %time is_prime_4(n7)
+True
+  69: 2 ** 25 - 1
+33554431
+  70: 2 ** 250 - 1
+1809251394333065553493296640760748560207343510400633813116524750123642650623
+  71: lp = [n for n in range(1000) if is_prime_4(n)]
+  72: lp
+[1,
+ 5,
+ 7,
+ 11,
+ 13,
+ 17,
+ 19,
+ 23,
+ 29,
+ 31,
+ 37,
+ 41,
+ 43,
+ 47,
+ 53,
+ 59,
+ 61,
+ 67,
+ 71,
+ 73,
+ 79,
+ 83,
+ 89,
+ 97,
+ 101,
+ 103,
+ 107,
+ 109,
+ 113,
+ 127,
+ 131,
+ 137,
+ 139,
+ 149,
+ 151,
+ 157,
+ 163,
+ 167,
+ 173,
+ 179,
+ 181,
+ 191,
+ 193,
+ 197,
+ 199,
+ 211,
+ 223,
+ 227,
+ 229,
+ 233,
+ 239,
+ 241,
+ 251,
+ 257,
+ 263,
+ 269,
+ 271,
+ 277,
+ 281,
+ 283,
+ 293,
+ 307,
+ 311,
+ 313,
+ 317,
+ 331,
+ 337,
+ 347,
+ 349,
+ 353,
+ 359,
+ 367,
+ 373,
+ 379,
+ 383,
+ 389,
+ 397,
+ 401,
+ 409,
+ 419,
+ 421,
+ 431,
+ 433,
+ 439,
+ 443,
+ 449,
+ 457,
+ 461,
+ 463,
+ 467,
+ 479,
+ 487,
+ 491,
+ 499,
+ 503,
+ 509,
+ 521,
+ 523,
+ 541,
+ 547,
+ 557,
+ 563,
+ 569,
+ 571,
+ 577,
+ 587,
+ 593,
+ 599,
+ 601,
+ 607,
+ 613,
+ 617,
+ 619,
+ 631,
+ 641,
+ 643,
+ 647,
+ 653,
+ 659,
+ 661,
+ 673,
+ 677,
+ 683,
+ 691,
+ 701,
+ 709,
+ 719,
+ 727,
+ 733,
+ 739,
+ 743,
+ 751,
+ 757,
+ 761,
+ 769,
+ 773,
+ 787,
+ 797,
+ 809,
+ 811,
+ 821,
+ 823,
+ 827,
+ 829,
+ 839,
+ 853,
+ 857,
+ 859,
+ 863,
+ 877,
+ 881,
+ 883,
+ 887,
+ 907,
+ 911,
+ 919,
+ 929,
+ 937,
+ 941,
+ 947,
+ 953,
+ 967,
+ 971,
+ 977,
+ 983,
+ 991,
+ 997]
+  73: lp = [n for n in range(5, 1000) if is_prime_4(n)]
+  74: lp[:10]
+[5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
+  75: len(lp)
+166
+  76: len(lp) + 2
+168
+  77: lp = [n for n in range(5, 1000) if is_prime_3(n)]
+  78: len(lp) + 2
+168
+  79: lp = [n for n in range(5, 1000) if is_prime_2(n)]
+  80: len(lp) + 2
+168
+  81: lp = [n for n in range(5, 10_000_000) if is_prime_4(n)]
+  82: %time lp = [n for n in range(5, 10_000_000) if is_prime_4(n)]
+  83: len(lp) + 2
+664579
+  84: %history -n -o -f data_science_basics_05.txt

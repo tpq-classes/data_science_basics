@@ -1,0 +1,107 @@
+   1: import numpy as np
+   2: import pandas as pd
+   3: np.arange(15)
+   4: np.arange(15).reshape(5, 3)
+   5: a = np.arange(15).reshape(5, 3)
+   6: np.array(list())
+   7: df = pd.DataFrame(a)
+   8: df
+   9: df.index
+  10: df.columns
+  11: df.index = list('abcde')
+  12: df.index
+  13: df.columns = list('ABC')
+  14: df.columns
+  15: df
+  16: a
+  17: 2 * a
+  18: 2 * df
+  19: df ** 2
+  20: np.sqrt(df)
+  21: 2 ** df
+  22: df ** df
+  23: a.sum()
+  24: df.sum()
+  25: df.sum().sum()
+  26: a.sum(axis=0)
+  27: a.sum(axis=1)
+  28: df.sum(axis=1)
+  29: a.mean()
+  30: df.mean()
+  31: df.mean().mean()
+  32: a = np.arange(3 * 10_000_000).reshape(10_000_000, 3)
+  33: a.nbytes
+  34: df = pd.DataFrame(a)
+  35: %time sr = np.sqrt(a)
+  36: %timeit sr = np.sqrt(a)
+  37: %time sr = np.sqrt(df)
+  38: %timeit sr = np.sqrt(df)
+  39: %timeit m = a.mean(axis=0)
+  40: %timeit m = df.mean(axis=0)
+  41: a = np.arange(15).reshape(5, 3)
+  42: df = pd.DataFrame(a)
+  43: df
+  44: df.columns = list('ABC')
+  45: df.index = list('abcde')
+  46: df
+  47: a
+  48: a[0]
+  49: a[0, 0]
+  50: a[-1, -1]
+  51: a[:, -1]
+  52: df.iloc[0]
+  53: df[0]
+  54: df.iloc[0, 0]
+  55: df.iloc[-1, -1]
+  56: df.iloc[:, -1]
+  57: df.iloc[:, :, 2]
+  58: df.iloc[::2]
+  59: df.iloc[::-1]
+  60:
+def f(x):
+    return x ** 2
+  61: f(a)
+  62: f(df)
+  63: df.apply(f)
+  64: df.sum()
+  65: df.sum().apply(f)
+  66: f(df.sum())
+  67: df.iloc[:, -1].sum().apply(f)
+  68: df.iloc[:, -1].sum()#.apply(f)
+  69: df.iloc[:, 1:].sum()#.apply(f)
+  70: df.iloc[:, 1:].sum().apply(f)
+  71: f(df.iloc[:, -1].sum())
+  72: df.loc[0]
+  73: df.loc['a']
+  74: df.loc['b']
+  75: df.loc['a':'b']
+  76: df.loc['b':]
+  77: df.loc['b':'d']
+  78: df.loc['A']
+  79: df.loc[:, 'A']
+  80: df.loc[:, 'A':'B']
+  81: df.loc[:, :'B']
+  82: df.loc[:, 'B':]
+  83: df.loc['a', 'A']
+  84: df.loc['e', 'C']
+  85: df.loc[-1, -1]
+  86: df
+  87: df['a]
+  88: df['a']
+  89: df['A']
+  90: a.dtype
+  91: df.dtypes
+  92: df['T'] = list('MNOPQ')
+  93: df
+  94: df.dtypes
+  95: df.sum()
+  96: np.sqrt(df)
+  97: df.sum(axis=1)
+  98: df.loc['A':'C']
+  99: df
+ 100: df.loc['A':'C'].apply(np.sqrt)
+ 101: df.loc[:, 'A':'C'].apply(np.sqrt)
+ 102: df.loc[:, 'A':'C'].apply(np.sum)
+ 103: df.dtypes
+ 104: %history -n -o -f data_science_basics_09.txt
+ 105: %history -n -f data_science_basics_09_no_output.txt

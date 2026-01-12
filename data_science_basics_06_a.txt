@@ -1,0 +1,4 @@
+    1  ipython
+    2  apt install screen
+    3  screen
+    4  history > live/data_science_basics_06_c.txt

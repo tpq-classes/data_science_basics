@@ -1,0 +1,54 @@
+   1: import numpy as np
+   2: a = np.random.random(10)
+   3: type(a)
+   4: a.nbytes
+   5: a.nbytes?
+   6: a = np.random.random(10)
+   7: a
+   8: a.nbytes
+   9: a.sum?
+  10: a.sum()
+  11: a.cumsum()
+  12:
+def f(x):
+    return x ** 2
+  13: f
+  14: f(10)
+  15:
+class MyClass:
+    pass
+  16: MyClass
+  17: MyClass?
+  18:
+class MyClass:
+    def __init__(self, value):
+        self.instance_attribute = value
+  19: mc = MyClass()
+  20: mc = MyClass(10)
+  21: mc.instance_attribute
+  22:
+class MyClass:
+    class_attribute = 'Python'
+    def __init__(self, value):
+        self.instance_attribute = value
+  23: mc = MyClass(10)
+  24: mc.class_attribute
+  25: mc.instance_attribute
+  26:
+class MyClass:
+    class_attribute = 'Python'
+    def __init__(self, value):
+        self.instance_attribute = value
+  27:
+class MyClass:
+    class_attribute = 'Python'
+    def __init__(self, value):
+        self.instance_attribute = value
+    def add_value(self, new_value):
+        return self.instance_attribute + new_value
+  28: mc = MyClass(10)
+  29: mc.instance_attribute
+  30: mc.add_value()
+  31: mc.add_value(25)
+  32: %history -o -n -f data_science_basics_23.txt
+  33: %history -n -f data_science_basics_23_no_output.txt

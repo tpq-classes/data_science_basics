@@ -1,0 +1,74 @@
+   1: import numpy as np
+   2: import pandas as pd
+   3: rng = np.random.default_rng()
+   4: a = rng.standard_normal((100_000, 10))
+   5: a.nbytes
+   6: import sys
+   7: sys.getsizeof(a)
+   8: index = pd.date_range('2025-1-20', periods=a.shape[0], freq='1min')
+   9: index
+  10: c = 'ABCDEFGHIJ'
+  11: df = pd.DataFrame(a, index=index, columns=list(c))
+  12: df.head()
+  13: %time df.to_csv('data.csv')
+  14: ls -n
+  15: %time df.to_hdf('data.hd5', key='data')
+  16: ls -n
+  17: %time df.to_parquet('data.pq')
+  18: %time df.to_excel('data.xlsx')
+  19: ls -n
+  20:
+%%time
+for _ in range(10):
+    !rm data.csv
+    df.to_csv('data.csv')
+  21: ls -n
+  22:
+%%time
+for _ in range(10):
+    !rm data.hd5
+    df.to_hdf('data.hd5', key='data')
+  23:
+%%time
+for _ in range(10):
+    !rm data.pq
+    df.to_parquet('data.pq')
+  24: import sqlite3 as sq3
+  25: con = sq3.connect('data.sq3')
+  26: %time df.to_sql('data', con)
+  27: ls -n
+  28: con.execute('SELECT * FROM data').fetchmany(5)
+  29: con.execute('SELECT * FROM sqlite_master').fetchall()
+  30: %time df_ = df.read_csv('data.csv')
+  31: %time df_ = pd.read_csv('data.csv')
+  32: df_.head()
+  33: %time df_ = pd.read_csv('data.csv', index_col=0, parse_dates=True)
+  34: df_.head()
+  35: %time df_ = pd.read_hdf('data.hd5', 'data')
+  36: df_.head()
+  37: %time df_ = pd.read_parquet('data.pq')
+  38: df_.head()
+  39: %time df_ = pd.read_excel('data.xlsx')
+  40: df_.head()
+  41: %time df_ = pd.read_sql('SELECT * FROM data', con)
+  42: df_.head()
+  43: %timeit df_ = pd.read_csv('data.csv', index_col=0, parse_dates=True)
+  44: %timeit df_ = pd.read_hdf('data.hd5', 'data')
+  45: %timeit df_ = pd.read_parquet('data.pq')
+  46: %time pd.read_csv('data.csv', index_col=0, parse_dates=True)['H'].mean()
+  47: %timeit pd.read_csv('data.csv', index_col=0, parse_dates=True)['H'].mean()
+  48: %time pd.read_hdf('data.hd5')['H'].mean()
+  49: %timeit pd.read_hdf('data.hd5')['H'].mean()
+  50: %timeit pd.read_parquet('data.pq')['H'].mean()
+  51: con.execute('SELECT AVG(H) FROM data').fetchall()
+  52: %time con.execute('SELECT AVG(H) FROM data').fetchall()
+  53: %timeit con.execute('SELECT AVG(H) FROM data').fetchall()
+  54: %time con.execute('SELECT AVG(H) FROM data WHERE A > 1.5').fetchall()
+  55:
+%%time
+r = pd.read_hdf('data.hd5')
+r[r['A'] > 1.5]['H'].mean()
+  56: rm data.*
+  57: cd live
+  58: %history -n -o -f data_science_basics_11.txt
+  59: %history -n -f data_science_basics_11_no_output.txt

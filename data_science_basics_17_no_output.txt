@@ -1,0 +1,56 @@
+   1: %run tick_client_2.py
+   2: ticks
+   3: ticks.info()
+   4: ticks['PRICE'].mean()
+   5: ticks[ticks['SYMBOL'] == 'AAPL']
+   6: aapl = ticks[ticks['SYMBOL'] == 'AAPL']
+   7: aapl
+   8: aapl.set_index('TIME')
+   9: ticks.resample?
+  10: ticks.tail()
+  11: aapl.tail()
+  12: aapl.resample('10s')
+  13: aapl.resample('10S')
+  14: aapl.index
+  15: aapl.set_index('TIME')
+  16: aapl.index
+  17: aapl.set_index?
+  18: aapl.set_index('TIME', inplace=True)
+  19: aapl.index
+  20: aapl.index = pd.DatetimeIndex(aapl.index)
+  21: aapl.index
+  22: aapl.resample('10s')
+  23: aapl.resample('10s').sum()
+  24: aapl.resample('10s').mean()
+  25: aapl.resample('10s').last()
+  26: aapl.tail(8)
+  27: aapl.resample('10s', label='left').last()
+  28: aapl.resample('10s', label='right').last()
+  29: aapl.resample('10s', label='right').max()
+  30: aapl.resample('10s', label='right').min()
+  31: aapl.resample('10s', label='right').first()
+  32: aapl.resample('10s', label='right').ohlc()
+  33: aapl.resample('10s', label='right').ohlc?
+  34: aapl['PRICE'].resample('10s', label='right').ohlc()
+  35: aapl
+  36: del aapl['SYMBOL']
+  37: aapl
+  38: aapl.resample('10s', label='right').ohlc()
+  39: aapl.resample('10s', label='right').last()
+  40: aapl.resample('3s', label='right').last()
+  41: aapl.resample('2s', label='right').last()
+  42: iaapl = aapl.resample('2s', label='right').last()
+  43: iaapl
+  44: iaapl.sum()
+  45: iaapl.mean()
+  46: iaapl
+  47: iaapl.ffill()
+  48: iaapl.fillna?
+  49: iaapl.fillna(0)
+  50: iaapl.fillna(0).mean()
+  51: iaapl.mean()
+  52: iaapl.fillna(0).sum()
+  53: iaapl.sum()
+  54: %history -o -n -f data_science_basics_17.txt
+  55: %history -n -f data_science_basics_17.txt
+  56: %history -n -f data_science_basics_17_no_output.txt

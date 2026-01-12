@@ -1,0 +1,69 @@
+   1: import numpy as np
+   2: a = np.random.random(10)
+   3: type(a)
+numpy.ndarray
+   4: a.nbytes
+80
+   5: a.nbytes?
+   6: a = np.random.random(10)
+   7: a
+array([0.95100302, 0.71333666, 0.87418524, 0.43431152, 0.67400395,
+       0.16035101, 0.86704666, 0.69761946, 0.94521896, 0.78735427])
+   8: a.nbytes
+80
+   9: a.sum?
+  10: a.sum()
+np.float64(7.1044307521148085)
+  11: a.cumsum()
+array([0.95100302, 1.66433968, 2.53852493, 2.97283645, 3.6468404 ,
+       3.80719141, 4.67423807, 5.37185753, 6.31707648, 7.10443075])
+  12:
+def f(x):
+    return x ** 2
+  13: f
+<function __main__.f(x)>
+  14: f(10)
+100
+  15:
+class MyClass:
+    pass
+  16: MyClass
+__main__.MyClass
+  17: MyClass?
+  18:
+class MyClass:
+    def __init__(self, value):
+        self.instance_attribute = value
+  19: mc = MyClass()
+  20: mc = MyClass(10)
+  21: mc.instance_attribute
+10
+  22:
+class MyClass:
+    class_attribute = 'Python'
+    def __init__(self, value):
+        self.instance_attribute = value
+  23: mc = MyClass(10)
+  24: mc.class_attribute
+'Python'
+  25: mc.instance_attribute
+10
+  26:
+class MyClass:
+    class_attribute = 'Python'
+    def __init__(self, value):
+        self.instance_attribute = value
+  27:
+class MyClass:
+    class_attribute = 'Python'
+    def __init__(self, value):
+        self.instance_attribute = value
+    def add_value(self, new_value):
+        return self.instance_attribute + new_value
+  28: mc = MyClass(10)
+  29: mc.instance_attribute
+10
+  30: mc.add_value()
+  31: mc.add_value(25)
+35
+  32: %history -o -n -f data_science_basics_23.txt

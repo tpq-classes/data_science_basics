@@ -1,0 +1,20 @@
+    1  apt update && apt upgrade -y
+    2  cd root
+    3  a=10
+    4  a
+    5  a = 10
+    6  s="this is text"
+    7  s
+    8  $s
+    9  echo $s
+   10  a=10
+   11  $a
+   12  echo $a
+   13  echo "This is the value of a: $a."
+   14  ls
+   15  cd live/
+   16  ls
+   17  read filename
+   18  echo $filename
+   19  cat $filename
+   20  history > data_science_basics_04_b.txt

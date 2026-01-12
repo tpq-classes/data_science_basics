@@ -1,0 +1,87 @@
+    1  ls
+    2  pwd
+    3  cd
+    4  pwd
+    5  cd ..
+    6  cd root/
+    7  ls
+    8  apt update
+    9  apt list --upgradable
+   10  apt upgrade
+   11  ls
+   12  cd
+   13  ls -an
+   14  ls
+   15  ls live
+   16  ls -an live
+   17  ls -hs live
+   18  ls -lt live
+   19  cd ~
+   20  cd ..
+   21  cd ~
+   22  cd -
+   23  cd 
+   24  ls
+   25  cd live/
+   26  ls
+   27  mv bsm.html ..
+   28  ls
+   29  cd ..
+   30  ls
+   31  mv bsm.html live/
+   32  ls
+   33  cd live/
+   34  ls
+   35  mv bsm.html black_scholes_merton.html
+   36  ls
+   37  echo "This is a printed statements."
+   38  echo "This is a saved text." > test.txt
+   39  ls
+   40  ls -an
+   41  cat test.txt 
+   42  cat black_scholes_merton.html 
+   43  ls
+   44  cp test.txt test_2.txt
+   45  ls
+   46  cp test.txt test_1.txt
+   47  ls
+   48  ls -an
+   49  rm test.txt 
+   50  ls
+   51  mkdir test
+   52  ls
+   53  mv *.txt test
+   54  ls
+   55  ls test
+   56  cp -r test ../test_copy
+   57  ls
+   58  cd ..
+   59  ls
+   60  ls test_copy/
+   61  rmdir test_copy/
+   62  rm -rf test_copy/
+   63  ls
+   64  cp live/test/ ./test_copy
+   65  cp -r live/test/ ./test_copy
+   66  ls
+   67  rm -rfi test_copy/
+   68  cd live/
+   69  ls
+   70  ls -an
+   71  touch black_scholes_merton.html 
+   72  ls
+   73  ls -an
+   74  cd test/
+   75  ls
+   76  touch test_3.txt
+   77  ls
+   78  ls -an
+   79  echo "This is the first line for the file." >> test_3.txt 
+   80  ls -an
+   81  cat test_3.txt 
+   82  echo "This is the second line for the file." >> test_3.txt 
+   83  echo "This is the third line for the file." >> test_3.txt 
+   84  ls -an
+   85  cat test_3.txt 
+   86  cd ..
+   87  history > data_science_basics_01.txt

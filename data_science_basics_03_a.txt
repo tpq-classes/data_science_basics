@@ -1,0 +1,4 @@
+    1  ipython
+    2  cd live
+    3  history data_science_basics_03_a.txt
+    4  history > data_science_basics_03_a.txt
