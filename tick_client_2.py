@@ -11,9 +11,12 @@ socket.connect('tcp://0.0.0.0:5555')
 socket.setsockopt_string(zmq.SUBSCRIBE, '')
 
 ticks = pd.DataFrame()
-
-while True:
+i=0
+while i <10000:
+    i += 1
     obj = socket.recv_pyobj()
     df = pd.DataFrame(obj, index=[0])
     ticks = pd.concat((ticks, df), ignore_index=True)
     print(obj)
+
+ticks.to_hdf('ticks.h5', 'data')
